@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DapperMVC.Models.EmployeeModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Empregados</h2>
+
+<p>
+    @Html.ActionLink("Novo Empregado", "AddOrEdit")
+</p>
+<table class="table table-striped">
+    <tr>
+        
+        <th>
+            <label >Nome</label>
+        </th>
+        <th>
+            <label >Cargo</label>
+        </th>
+        <th>
+            <label >Idade</label>
+        </th>
+        <th>
+            <label >Salario</label>
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr >
+   
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "AddOrEdit", new { id=item.EmployeeID }) |
+            @Html.ActionLink("Deletar", "Delete", new {  id=item.EmployeeID })
+        </td>
+    </tr>
+}
+
+</table>
